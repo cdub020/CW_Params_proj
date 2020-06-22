@@ -7,7 +7,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.get('/students', (req, res) => res.send(students))
+app.get('/students', (req, res) => {
+    let search = req.query.search
+    if (search !== undefined){
+        for (var x=0;x<students.length;x++){
+            if (students[x].name.includes(search)){
+                res.send(students[x])
+            }
+        }
+    }
+    else{
+        res.send(students)
+    }
+})
+
 
 app.get('/students/:studentId', (req, res) => {
     res.send(students[req.params.studentId-1])
@@ -17,15 +30,7 @@ app.get('/grades/:studentId', (req, res) => {
     res.send(students[req.params.studentId-1].grades)
 })
 
-app.get('/students', (req, res) => {
-    let search = req.query.search
-    res.send('Hello ${search}, how are you?') //Not working
-    // for (var x=0;x<students.length;x++){
-    //     if (students[x].name.includes(search)){
-    //         res.send(students[x])
-    //     }
-    // }
-})
+
 
 app.post('/grades', (req, res) => {
     let studentId  = req.body.studentId
