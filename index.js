@@ -36,17 +36,18 @@ app.post('/grades', (req, res) => {
     let studentId  = req.body.studentId
     let grades = req.body.grades
     if (studentId !== undefined && grades !== undefined){
-        res.send("Success, grade stored")
+        for (var y=0; y<grades.length;y++){
+            res.json(students[studentId-1].grades.push(grades[y]))
+        }
     }
 })
 
 app.post('/register', (req,res) => {
     let studentId  = req.body.studentId
     let name = req.body.name
-    let grades = req.body.grades
 
     if (studentId !== undefined && name !== undefined){
-        res.send("New Student Created!\n" + studentId + name + grades)
+        res.json(students.push(req.body));
     }
     else {
         throw new Error("Enter a student ID () and name [first,last]!")
