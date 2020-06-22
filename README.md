@@ -2,7 +2,7 @@ Create a new repository for this project. Create a Restful API in Express which 
 
 Service endpoints:
 
-GET /students - returns a list of all students
+GET /students - returns a list of all students\n
 this endpoint, optionally, accepts query parameters
 GET /students?search=<query> - returns a list of students filtered on name matching the given query
 GET /students/:studentId - returns details of a specific student by student id
