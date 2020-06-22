@@ -1,6 +1,6 @@
 Create a new repository for this project. Create a Restful API in Express which meets the below processing requirements. The applicaton does not need persistence. It should be in memory.
 
-#Service endpoints:
+Service endpoints:
 
 GET /students - returns a list of all students\n
 this endpoint, optionally, accepts query parameters
